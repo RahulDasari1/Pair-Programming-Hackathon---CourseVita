@@ -1,0 +1,74 @@
+<!-- 
+
+    PS-12.  Book Sharing Platform
+
+    Problem: Many readers have books they no longer need but struggle to find local readers to exchange or lend them to.
+
+    Challenge: Build a peer-to-peer book-sharing web/ mobile app where users can:
+
+    1. List books they own and are willing to lend or exchange.
+
+    2. Find book-sharing partners nearby using Geolocation API and an interactive Google Maps integration.
+
+    curl -X POST "https://www.googleapis.com/geolocation/v1/geolocate?key=YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+"homeMobileCountryCode": 310,
+"homeMobileNetworkCode": 410,
+"radioType": "gsm",
+"carrier": "Vodafone",
+"considerIp": true
+}'
+
+    3. Send & accept book requests via an in-app messaging system.
+
+    4. Rate & review users after book exchanges.
+
+    5. Store user/book data in MongoDB, use React for the frontend, and build the backend with Node.js & Express. 
+    
+    -->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Click the button to get your coordinates:</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<script>
+const x = document.getElementById("demo");
+
+function getLocation() {
+if (navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(showPosition, showError);
+} else {
+x.innerHTML = "Geolocation is not supported by this browser.";
+}
+}
+
+function showPosition(position) {
+x.innerHTML = "Latitude: " + position.coords.latitude +
+"<br>Longitude: " + position.coords.longitude;
+}
+
+function showError(error) {
+switch(error.code) {
+case error.PERMISSION_DENIED:
+x.innerHTML = "User denied the request for Geolocation.";
+break;
+case error.POSITION_UNAVAILABLE:
+x.innerHTML = "Location information is unavailable.";
+break;
+case error.TIMEOUT:
+x.innerHTML = "The request to get user location timed out.";
+break;
+case error.UNKNOWN_ERROR:
+x.innerHTML = "An unknown error occurred.";
+break;
+}
+}
+</script>
+
+</body>
+</html>
