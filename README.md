@@ -1,7 +1,3 @@
-Here’s your **personalized README.md** with your contact details:  
-
----
-
 # 📚 **Book Sharing Platform**  
 _A peer-to-peer web application for book lovers to lend, exchange, and chat with local readers._  
 
